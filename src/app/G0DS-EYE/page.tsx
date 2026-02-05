@@ -6,6 +6,7 @@ import {
   PerceptusHeader,
   LoginModal,
   CameraScannerModal,
+  TimeSelectionModal,
 } from "./components";
 import {
   HeroSection,
@@ -25,8 +26,19 @@ const TronGrid3D = dynamic(
 export default function PerceptusPage() {
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
   const [isScannerOpen, setIsScannerOpen] = React.useState(false);
+  const [isTimeSelectionOpen, setIsTimeSelectionOpen] = React.useState(false);
 
   const handleAuthSuccess = () => {
+    setIsScannerOpen(true);
+  };
+
+  const handleTimeInClick = () => {
+    setIsTimeSelectionOpen(false);
+    setIsScannerOpen(true);
+  };
+
+  const handleTimeOutClick = () => {
+    setIsTimeSelectionOpen(false);
     setIsScannerOpen(true);
   };
 
@@ -52,6 +64,12 @@ export default function PerceptusPage() {
         onOpenChange={setIsLoginOpen}
         onAuthSuccess={handleAuthSuccess}
       />
+      <TimeSelectionModal
+        open={isTimeSelectionOpen}
+        onOpenChange={setIsTimeSelectionOpen}
+        onTimeInClick={handleTimeInClick}
+        onTimeOutClick={handleTimeOutClick}
+      />
       <CameraScannerModal
         open={isScannerOpen}
         onOpenChange={setIsScannerOpen}
@@ -59,7 +77,7 @@ export default function PerceptusPage() {
 
       {/* Main content */}
       <main className="relative z-10">
-        <HeroSection />
+        <HeroSection onInitializeScan={() => setIsTimeSelectionOpen(true)} />
         <FeaturesSection />
         <LiveDemoSection />
         <CTASection />

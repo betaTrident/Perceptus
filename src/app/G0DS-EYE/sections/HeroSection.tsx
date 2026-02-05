@@ -9,7 +9,11 @@ import {
 } from "@/components/tron-ui";
 import { FacialRecognitionStats } from "../components/FacialRecognitionStats";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onInitializeScan?: () => void;
+}
+
+export function HeroSection({ onInitializeScan }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen overflow-hidden">
       <TronGridMap />
@@ -74,7 +78,9 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="mb-10 flex flex-wrap justify-center gap-4">
-          <button className="group relative overflow-hidden rounded border-2 border-primary bg-primary/20 px-10 py-4 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_var(--primary)]">
+          <button 
+            onClick={onInitializeScan}
+            className="group relative overflow-hidden rounded border-2 border-primary bg-primary/20 px-10 py-4 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_var(--primary)]">
             <span className="relative z-10">INITIALIZE SCAN</span>
             <div className="absolute inset-0 -z-10 translate-y-full bg-primary transition-transform group-hover:translate-y-0" />
           </button>

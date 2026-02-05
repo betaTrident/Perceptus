@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "The Gridcn | Tron-Inspired shadcn/ui Theme",
+  title: "Perceptus - G0Ds EYE",
   description: "A Tron: Ares inspired theme system for shadcn/ui featuring Greek god color schemes",
   icons: {
     icon: [
